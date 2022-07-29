@@ -1,4 +1,4 @@
-import { ICategoriesRepository } from '@modules/cars/repositories/ICategoruesRepository';
+import { ICategoriesRepository } from '@modules/cars/repositories/ICategoriesRepository';
 import { parse } from 'csv-parse';
 import fs from 'fs';
 import { inject, injectable } from 'tsyringe';
@@ -30,24 +30,24 @@ class ImportCategoryUseCase {
                     description,
                 });
             })
-            .on("end", () => {
-                fs.promises.unlink(file.path);
-                resolve(categories);
-            })
-            .on("error", err => {
-                reject(err);
-            })
+                .on("end", () => {
+                    fs.promises.unlink(file.path);
+                    resolve(categories);
+                })
+                .on("error", err => {
+                    reject(err);
+                })
         });
     }
 
     async execute(file: Express.Multer.File): Promise<void> {
         const categories = await this.loadCategories(file);
-        
+
         categories.map(async category => {
             const { name, description } = category;
             const existCategory = await this.categoriesRepository.findByName(name);
 
-            if(!existCategory) {
+            if (!existCategory) {
                 await this.categoriesRepository.create({
                     name,
                     description,

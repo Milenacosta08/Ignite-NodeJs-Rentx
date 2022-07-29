@@ -1,5 +1,5 @@
 import { Category } from "../infra/typeorm/entities/Category";
-import { ICategoriesRepository, ICreateCategoryDTO } from "./ICategoruesRepository";
+import { ICategoriesRepository, ICreateCategoryDTO } from "./ICategoriesRepository";
 
 class PostgresCategoriesRepository implements ICategoriesRepository {
     findByName(name: string): Category {
