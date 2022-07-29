@@ -5,13 +5,13 @@ import { CreateCarUseCase } from "./CreateCarUseCase";
 let createCarUseCase: CreateCarUseCase;
 let carsRepositoryInMemory: CarsRepositoryInMemory;
 
-describe("Craeate Car", () => {
+describe("Create Car", () => {
 
     beforeEach(() => {
         createCarUseCase = new CreateCarUseCase(carsRepositoryInMemory);
     });
 
-    it("should be able create a nnew car", async () => {
+    it("should be able create a new car", async () => {
         const car = await createCarUseCase.execute({
             name: "Name Car",
             description: "Description Car",
@@ -25,7 +25,7 @@ describe("Craeate Car", () => {
         expect(car).toHaveProperty("id");
     });
 
-    it("should not be able create a new car with same license plate", () => {
+    it("should not be able create a new car with same license plate", async () => {
         expect(async () => {
             await createCarUseCase.execute({
                 name: "Car1",
