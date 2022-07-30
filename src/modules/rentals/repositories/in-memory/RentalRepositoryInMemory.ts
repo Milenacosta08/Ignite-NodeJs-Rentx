@@ -2,7 +2,7 @@ import { ICreateRentalDTO } from "@modules/rentals/dtos/ICreateRentalDTO";
 import { Rental } from "@modules/rentals/infra/typeorm/entities/Rental";
 import { IRentalRepository } from "../IRentalRepository";
 
-class RentalRepositoryInMemmory implements IRentalRepository {
+class RentalRepositoryInMemory implements IRentalRepository {
     rentals: Rental[] = [];
 
     async create({ car_id, user_id, expected_return_date }: ICreateRentalDTO): Promise<Rental> {
@@ -30,4 +30,4 @@ class RentalRepositoryInMemmory implements IRentalRepository {
 
 }
 
-export { RentalRepositoryInMemmory };
+export { RentalRepositoryInMemory };
