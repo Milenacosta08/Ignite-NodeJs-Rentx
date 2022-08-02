@@ -1,4 +1,4 @@
-import { autoInjectable, inject } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
 import { v4 as uuidV4 } from "uuid";
 
@@ -9,7 +9,7 @@ import { IDateProvider } from "@shared/container/providers/DateProvider/IDatePro
 import { IMailProvider } from "@shared/container/providers/MailProvider/IMailProvider";
 import { resolve } from "path";
 
-@autoInjectable()
+@injectable()
 class SendForgotPasswordMailUseCase {
     constructor(
         @inject('UsersRepository')
